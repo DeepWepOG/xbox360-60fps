@@ -3,54 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep Wep OG - Xbox 360 60 FPS</title>
+    <title>Hot Wheels: Beat That! (60 FPS) - Deep Wep OG</title>
     <style>
         body { background-color: #121212; color: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
-        header { background-color: #107C10; padding: 25px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-        header h1 { margin: 0; font-size: 28px; letter-spacing: 1px; }
-        header p { margin: 5px 0 0; opacity: 0.9; }
-        .contenedor { max-width: 850px; margin: 30px auto; padding: 0 20px; }
-        .buscador { width: 100%; padding: 15px; font-size: 16px; border-radius: 8px; border: none; margin-bottom: 25px; background-color: #252525; color: white; box-sizing: border-box; }
-        .juego { background-color: #1e1e1e; border-left: 5px solid #107C10; border-radius: 8px; padding: 20px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        .info { max-width: 70%; }
-        .info h2 { margin: 0 0 8px 0; color: #4caf50; }
-        .etiqueta { background-color: #333; padding: 4px 8px; border-radius: 4px; font-size: 12px; margin-right: 5px; display: inline-block; }
-        .aviso-xenia { background-color: #2b2210; border-left: 3px solid #f59e0b; color: #fcd34d; padding: 8px 12px; border-radius: 4px; font-size: 13px; margin-top: 10px; }
-        .boton-descarga { background-color: #107C10; color: white; text-decoration: none; padding: 12px 20px; border-radius: 6px; font-weight: bold; margin-top: 10px; display: inline-block; }
-        .boton-descarga:hover { background-color: #0e6b0e; }
+        header { background-color: #107C10; padding: 20px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        header a { color: white; text-decoration: none; font-weight: bold; font-size: 20px; }
+        .contenedor { max-width: 900px; margin: 30px auto; padding: 0 20px; }
+        .boton-volver { display: inline-block; margin-bottom: 20px; color: #4caf50; text-decoration: none; font-weight: bold; }
+        
+        /* Cabecera del juego (Carátula + Info) */
+        .ficha-juego { display: flex; gap: 25px; background: #1e1e1e; padding: 25px; border-radius: 10px; flex-wrap: wrap; border-left: 5px solid #107C10; }
+        .caratula { width: 220px; height: 310px; object-fit: cover; border-radius: 8px; border: 2px solid #333; background: #2a2a2a; }
+        .detalles { flex: 1; min-width: 280px; }
+        .detalles h1 { margin-top: 0; color: #4caf50; }
+        .etiqueta { background: #333; padding: 5px 10px; border-radius: 4px; font-size: 13px; margin-right: 6px; display: inline-block; margin-bottom: 5px; }
+        .aviso-xenia { background: #2b2210; border-left: 4px solid #f59e0b; color: #fcd34d; padding: 12px; border-radius: 5px; margin: 15px 0; font-size: 14px; }
+
+        /* Botones de descarga XEX y GOD */
+        .caja-descargas { display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
+        .btn-formato { flex: 1; text-align: center; padding: 15px; border-radius: 8px; text-decoration: none; color: white; font-weight: bold; min-width: 200px; transition: 0.2s; }
+        .btn-xex { background-color: #107C10; }
+        .btn-xex:hover { background-color: #0d660d; }
+        .btn-god { background-color: #1d4ed8; }
+        .btn-god:hover { background-color: #1e40af; }
+        .btn-formato span { display: block; font-size: 12px; font-weight: normal; opacity: 0.9; margin-top: 4px; }
+        .nota-apoyo { font-size: 12px; color: #9ca3af; margin-top: 10px; text-align: center; }
+
+        /* Secciones de contenido */
+        .seccion { background: #1e1e1e; padding: 25px; border-radius: 10px; margin-top: 25px; }
+        .seccion h2 { margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 10px; color: #4caf50; }
+        
+        /* Galería de capturas */
+        .galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px; }
+        .galeria img { width: 100%; height: 160px; object-fit: cover; border-radius: 6px; border: 1px solid #333; background: #2a2a2a; }
+        
+        ol li { margin-bottom: 10px; line-height: 1.5; }
+        code { background: #333; padding: 2px 6px; border-radius: 4px; color: #86efac; }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>DEEP WEP OG | XBOX 360 60 FPS</h1>
-        <p>Juegos y parches desbloqueados a 60 FPS por Deep Wep OG</p>
+        <a href="index.html">DEEP WEP OG | XBOX 360 60 FPS</a>
     </header>
+
     <div class="contenedor">
-        <input type="text" class="buscador" id="filtro" onkeyup="buscarJuego()" placeholder="Buscar juego (ej. Hot Wheels)...">
-        <div id="lista-juegos">
-            <div class="juego">
-                <div class="info">
-                    <h2>Hot Wheels: Beat That!</h2>
-                    <span class="etiqueta">30 FPS ➔ 60 FPS</span>
-                    <span class="etiqueta">.XEX / .GOD</span>
-                    <p>Versión desbloqueada a 60 cuadros por segundo.</p>
-                    <div class="aviso-xenia">
-                        ⚠️ <strong>Estado en Xenia Canary:</strong> El emulador lo corre, pero aún se está trabajando en ello y puede haber errores.
-                    </div>
+        <a href="index.html" class="boton-volver">⬅ Volver a la lista de juegos</a>
+
+        <!-- CARÁTULA Y DESCARGAS -->
+        <div class="ficha-juego">
+            <!-- Asegúrate de tener la imagen caratula-hw.jpg en la misma carpeta -->
+            <img src="caratula-hw.jpg" alt="Carátula Hot Wheels Beat That" class="caratula">
+            
+            <div class="detalles">
+                <h1>Hot Wheels: Beat That!</h1>
+                <span class="etiqueta">60 FPS Desbloqueados</span>
+                <span class="etiqueta">Region Free</span>
+                <span class="etiqueta">RGH / Xenia</span>
+                <span class="etiqueta">531 MB (.RAR)</span>
+
+                <p><strong>Descripción:</strong> Compite a toda velocidad con los autos más icónicos de Hot Wheels en pistas llenas de acrobacias, turbo y armas dentro de habitaciones gigantes, ahora disfrutando de la fluidez total a 60 fotogramas por segundo.</p>
+
+                <div class="aviso-xenia">
+                    ⚠️ <strong>Nota sobre Xenia Canary:</strong> Se está trabajando para que Xenia Canary lo corra al 100%. Actualmente arranca y es jugable, pero puede presentar errores gráficos o fallos.
                 </div>
-                <a href="hot-wheels.html" class="boton-descarga">Ver y Descargar</a>
+
+                <!-- BOTONES DE DESCARGA CON TUS ENLACES DE LINKVERTISE -->
+                <div class="caja-descargas">
+                    <a href="https://direct-link.net/1157790/DD5Tz6YKxF5P" class="btn-formato btn-xex" target="_blank">
+                        ⬇ Descargar Formato .XEX
+                        <span>Linkvertise ➔ MediaFire (531 MB) • Xenia / Aurora</span>
+                    </a>
+                    <a href="https://link-center.net/1157790/uxPlFWq2gRbN" class="btn-formato btn-god" target="_blank">
+                        ⬇ Descargar Formato .GOD
+                        <span>Linkvertise ➔ MediaFire (531 MB) • HDD Interno RGH</span>
+                    </a>
+                </div>
+                <p class="nota-apoyo">💡 Los enlaces pasan por un breve acortador de Linkvertise para apoyar el desarrollo de más parches a 60 FPS.</p>
             </div>
         </div>
+
+        <!-- CAPTURAS DE GAMEPLAY -->
+        <div class="seccion">
+            <h2>Capturas de Gameplay (60 FPS)</h2>
+            <div class="galeria">
+                <img src="captura1.jpg" alt="Gameplay 1">
+                <img src="captura2.jpg" alt="Gameplay 2">
+                <img src="captura3.jpg" alt="Gameplay 3">
+            </div>
+        </div>
+
+        <!-- INSTRUCCIONES DE INSTALACIÓN -->
+        <div class="seccion">
+            <h2>Instrucciones de Instalación</h2>
+            <ol>
+                <li><strong>Si descargaste el formato .XEX:</strong> Descomprime el archivo <code>.rar</code>. Si usas <strong>Xenia Canary</strong>, abre el emulador, ve a <em>File > Open</em> y selecciona el archivo <code>default.xex</code>. Si usas consola con <strong>RGH</strong>, pasa la carpeta a tu disco duro y búscala desde Aurora o Freestyle.</li>
+                <li><strong>Si descargaste el formato .GOD:</strong> Descomprime el archivo y obtendrás una carpeta con números y letras (Title ID). Pásala a tu Xbox 360 RGH en la ruta: <code>Hdd1:\Content\0000000000000000\</code> y escanea tus juegos en Aurora.</li>
+                <li><strong>Importante para Xenia:</strong> Asegúrate de tener configurado correctamente el límite de FPS o <code>vsync = false</code> en tu archivo <code>xenia-canary.config.toml</code> para aprovechar los 60 FPS.</li>
+            </ol>
+        </div>
+
     </div>
-    <script>
-        function buscarJuego() {
-            let input = document.getElementById('filtro').value.toLowerCase();
-            let juegos = document.getElementsByClassName('juego');
-            for (let i = 0; i < juegos.length; i++) {
-                let titulo = juegos[i].getElementsByTagName('h2')[0].innerText.toLowerCase();
-                juegos[i].style.display = titulo.includes(input) ? "flex" : "none";
-            }
-        }
-    </script>
+
 </body>
 </html>
