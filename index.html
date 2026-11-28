@@ -1,39 +1,185 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deep Wep OG - Xbox 360 60 FPS</title>
     <style>
-        body { background-color: #121212; color: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
-        header { background-color: #107C10; padding: 25px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-        header h1 { margin: 0; font-size: 28px; letter-spacing: 1px; }
-        header p { margin: 5px 0 0; opacity: 0.9; }
-        .contenedor { max-width: 850px; margin: 30px auto; padding: 0 20px; }
-        .buscador { width: 100%; padding: 15px; font-size: 16px; border-radius: 8px; border: none; margin-bottom: 25px; background-color: #252525; color: white; box-sizing: border-box; }
-        .juego { background-color: #1e1e1e; border-left: 5px solid #107C10; border-radius: 8px; padding: 20px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        .info { max-width: 70%; }
-        .info h2 { margin: 0 0 8px 0; color: #4caf50; }
-        .etiqueta { background-color: #333; padding: 4px 8px; border-radius: 4px; font-size: 12px; margin-right: 5px; display: inline-block; }
-        .aviso-xenia { background-color: #2b2210; border-left: 3px solid #f59e0b; color: #fcd34d; padding: 8px 12px; border-radius: 4px; font-size: 13px; margin-top: 10px; }
-        .boton-descarga { background-color: #107C10; color: white; text-decoration: none; padding: 12px 20px; border-radius: 6px; font-weight: bold; margin-top: 10px; display: inline-block; }
-        .boton-descarga:hover { background-color: #0e6b0e; }
+        body {
+            background: url('fondo-aero.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-color: #0b2e13;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        /* Capa sutil para que siempre se lea bien el texto */
+        .overlay-fondo {
+            min-height: 100vh;
+            background: rgba(8, 22, 12, 0.45);
+            backdrop-filter: blur(4px);
+            padding-bottom: 40px;
+        }
+        /* Cabecera estilo barra brillante Frutiger Aero */
+        header {
+            background: linear-gradient(180deg, rgba(132, 226, 78, 0.85) 0%, rgba(16, 124, 16, 0.9) 50%, rgba(9, 77, 9, 0.95) 100%);
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.7);
+            border-bottom: 2px solid rgba(187, 247, 208, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .titulo-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        /* Orbe estilo Xbox 360 Frutiger Aero */
+        .orbe-xbox {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 25%, #ffffff 0%, #d9f99d 25%, #84cc16 65%, #3f6212 100%);
+            box-shadow: 0 0 15px rgba(163, 230, 53, 0.9), inset 0 -3px 6px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #ffffff;
+            position: relative;
+        }
+        .orbe-xbox::after {
+            content: "X";
+            font-weight: 900;
+            font-size: 24px;
+            color: #15803d;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+        }
+        header p {
+            margin: 0;
+            font-size: 15px;
+            color: #ecfccb;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+        }
+        .contenedor {
+            max-width: 860px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        /* Buscador cristalino */
+        .buscador {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 16px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.22);
+            backdrop-filter: blur(12px);
+            color: white;
+            box-sizing: border-box;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.5);
+            outline: none;
+        }
+        .buscador::placeholder { color: #e2e8f0; }
+        .buscador:focus {
+            border-color: #a3e635;
+            box-shadow: 0 0 18px rgba(163, 230, 53, 0.6);
+        }
+        /* Tarjetas Glassmorphism Frutiger Aero */
+        .juego {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(20, 45, 25, 0.65) 100%);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-left: 6px solid #84cc16;
+            border-radius: 16px;
+            padding: 22px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.5);
+        }
+        .info { flex: 1; min-width: 260px; }
+        .info h2 {
+            margin: 0 0 8px 0;
+            color: #bef264;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+        }
+        .etiqueta {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 6px;
+            display: inline-block;
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5);
+        }
+        .aviso-xenia {
+            background: rgba(66, 42, 8, 0.72);
+            border-left: 4px solid #facc15;
+            color: #fef08a;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-top: 12px;
+        }
+        /* Botón gel brillante estilo Frutiger Aero */
+        .boton-descarga {
+            background: linear-gradient(180deg, #a3e635 0%, #16a34a 52%, #15803d 100%);
+            color: white;
+            text-decoration: none;
+            padding: 14px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            box-shadow: 0 4px 15px rgba(22, 163, 74, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            transition: 0.2s;
+            display: inline-block;
+        }
+        .boton-descarga:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 6px 22px rgba(163, 230, 53, 0.75);
+        }
     </style>
 </head>
 <body>
+<div class="overlay-fondo">
     <header>
-        <h1>DEEP WEP OG | XBOX 360 60 FPS</h1>
+        <div class="titulo-logo">
+            <div class="orbe-xbox"></div>
+            <h1>DEEP WEP OG | XBOX 360 60 FPS</h1>
+        </div>
         <p>Juegos y parches desbloqueados a 60 FPS por Deep Wep OG</p>
     </header>
+
     <div class="contenedor">
-        <input type="text" class="buscador" id="filtro" onkeyup="buscarJuego()" placeholder="Buscar juego (ej. Hot Wheels)...">
+        <input type="text" class="buscador" id="filtro" onkeyup="buscarJuego()" placeholder="🔍 Buscar juego (ej. Hot Wheels)...">
+
         <div id="lista-juegos">
             <div class="juego">
                 <div class="info">
                     <h2>Hot Wheels: Beat That!</h2>
                     <span class="etiqueta">30 FPS ➔ 60 FPS</span>
+                    <span class="etiqueta">Versión BETA</span>
                     <span class="etiqueta">.XEX / .GOD</span>
-                    <p>Versión desbloqueada a 60 cuadros por segundo.</p>
+                    <p>Versión desbloqueada a 60 cuadros por segundo para consola RGH y Xenia.</p>
                     <div class="aviso-xenia">
                         ⚠️ <strong>Estado en Xenia Canary:</strong> El emulador lo corre, pero aún se está trabajando en ello y puede haber errores.
                     </div>
@@ -42,15 +188,17 @@
             </div>
         </div>
     </div>
-    <script>
-        function buscarJuego() {
-            let input = document.getElementById('filtro').value.toLowerCase();
-            let juegos = document.getElementsByClassName('juego');
-            for (let i = 0; i < juegos.length; i++) {
-                let titulo = juegos[i].getElementsByTagName('h2')[0].innerText.toLowerCase();
-                juegos[i].style.display = titulo.includes(input) ? "flex" : "none";
-            }
+</div>
+
+<script>
+    function buscarJuego() {
+        let input = document.getElementById('filtro').value.toLowerCase();
+        let juegos = document.getElementsByClassName('juego');
+        for (let i = 0; i < juegos.length; i++) {
+            let titulo = juegos[i].getElementsByTagName('h2').innerText.toLowerCase();
+            juegos[i].style.display = titulo.includes(input) ? "flex" : "none";
         }
-    </script>
+    }
+</script>
 </body>
 </html>

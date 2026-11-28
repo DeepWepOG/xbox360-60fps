@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hot Wheels: Beat That! (60 FPS) - Deep Wep OG</title>
+    <style>
+        body { background: url('fondo-aero.jpg') no-repeat center center fixed; background-size: cover; background-color: #0b2e13; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; }
+        .overlay { min-height: 100vh; background: rgba(8, 22, 12, 0.45); backdrop-filter: blur(4px); padding-bottom: 40px; }
+        header { background: linear-gradient(180deg, rgba(132,226,78,0.85), rgba(16,124,16,0.95)); padding: 16px; text-align: center; border-bottom: 2px solid #bbf7d0; display: flex; justify-content: center; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+        .orbe { width: 34px; height: 34px; border-radius: 50%; background: radial-gradient(circle at 30% 25%, #fff, #84cc16 65%, #3f6212); border: 2px solid #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #15803d; font-size: 19px; }
+        header a { color: #fff; text-decoration: none; font-weight: bold; font-size: 19px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .contenedor { max-width: 900px; margin: 25px auto; padding: 0 18px; }
+        .volver { display: inline-block; margin-bottom: 16px; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.45); padding: 7px 15px; border-radius: 20px; color: #ecfccb; text-decoration: none; font-weight: bold; font-size: 14px; }
+        .card { background: linear-gradient(145deg, rgba(255,255,255,0.2), rgba(16,38,22,0.75)); backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.45); border-radius: 16px; padding: 22px; margin-bottom: 22px; box-shadow: 0 8px 30px rgba(0,0,0,0.35); }
+        .ficha { display: flex; gap: 22px; flex-wrap: wrap; border-left: 6px solid #84cc16; }
+        .caratula { width: 210px; height: 295px; object-fit: cover; border-radius: 12px; border: 2px solid rgba(255,255,255,0.6); }
+        .detalles { flex: 1; min-width: 260px; }
+        h1, h2 { margin-top: 0; color: #bef264; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        h2 { border-bottom: 1px solid rgba(255,255,255,0.25); padding-bottom: 8px; font-size: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .tag { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); padding: 4px 10px; border-radius: 15px; font-size: 12px; font-weight: bold; margin: 0 4px 5px 0; display: inline-block; }
+        .aviso { background: rgba(66,42,8,0.75); border-left: 4px solid #facc15; color: #fef08a; padding: 10px 12px; border-radius: 8px; margin: 12px 0; font-size: 13px; line-height: 1.4; }
+        .descargas { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; align-items: stretch; }
+        .btn { flex: 1; text-align: center; padding: 12px; border-radius: 12px; text-decoration: none; color: #fff; font-weight: bold; min-width: 170px; border: 1px solid rgba(255,255,255,0.7); display: flex; flex-direction: column; justify-content: center; transition: 0.2s; }
+        .btn:hover { transform: translateY(-2px); }
+        .xex { background: linear-gradient(180deg, #a3e635, #15803d); }
+        .god { background: linear-gradient(180deg, #60a5fa, #1d4ed8); }
+        .btn span { font-size: 11px; font-weight: normal; opacity: 0.9; margin-top: 3px; }
+        .pass { background: rgba(15,35,20,0.85); border: 2px dashed #a3e635; border-radius: 12px; padding: 8px 14px; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; min-width: 140px; }
+        .pass small { font-size: 10px; color: #d9f99d; }
+        .pass strong { font-size: 17px; margin: 3px 0; font-family: monospace; }
+        .btn-copy { background: #16a34a; color: #fff; border: 1px solid #fff; border-radius: 10px; padding: 3px 10px; font-size: 11px; font-weight: bold; cursor: pointer; }
+        video { width: 100%; border-radius: 12px; border: 2px solid #a3e635; background: #000; display: block; box-shadow: 0 6px 25px rgba(0,0,0,0.5); }
+        .btn-yt { display: inline-block; margin-top: 12px; background: linear-gradient(180deg, #ef4444, #b91c1c); color: #fff; text-decoration: none; padding: 10px 18px; border-radius: 10px; font-weight: bold; font-size: 14px; border: 1px solid rgba(255,255,255,0.7); box-shadow: 0 4px 12px rgba(0,0,0,0.3); transition: 0.2s; }
+        .btn-yt:hover { transform: translateY(-2px); background: linear-gradient(180deg, #f87171, #dc2626); }
+        .galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+        .galeria img { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; border: 2px solid rgba(255,255,255,0.5); cursor: pointer; transition: 0.2s; }
+        .galeria img:hover { border-color: #a3e635; transform: scale(1.02); }
+        code { background: rgba(0,0,0,0.45); padding: 2px 6px; border-radius: 4px; color: #bef264; }
+        .visor { display: none; position: fixed; z-index: 999; inset: 0; background: rgba(8,18,10,0.92); backdrop-filter: blur(8px); justify-content: center; align-items: center; flex-direction: column; }
+        .visor img { max-width: 85%; max-height: 78vh; border-radius: 12px; border: 2px solid #a3e635; }
+        .v-btn { position: fixed; background: rgba(255,255,255,0.2); color: #fff; border: 2px solid #a3e635; border-radius: 50%; width: 46px; height: 46px; font-size: 22px; cursor: pointer; }
+        .v-close { top: 20px; right: 25px; }
+        .v-prev { top: 50%; left: 20px; transform: translateY(-50%); }
+        .v-next { top: 50%; right: 20px; transform: translateY(-50%); }
+    </style>
+</head>
+<body>
+<div class="overlay">
+    <header><div class="orbe">X</div><a href="index.html">DEEP WEP OG | XBOX 360 60 FPS</a></header>
+    <div class="contenedor">
+        <a href="index.html" class="volver">⬅ Volver a la lista</a>
+
+        <div class="card ficha">
+            <img src="caratula-hw.jpg" alt="Hot Wheels Beat That" class="caratula">
+            <div class="detalles">
+                <h1>Hot Wheels: Beat That!</h1>
+                <span class="tag">60 FPS Unlocked</span><span class="tag">BETA</span><span class="tag">Region Free</span><span class="tag">RGH / Xenia</span><span class="tag">531 MB</span>
+                <p>Compite a toda velocidad con los autos más icónicos de Hot Wheels en pistas llenas de acrobacias y armas, ahora con fluidez total a 60 FPS.</p>
+                <div class="aviso">⚠️ <strong>Versión BETA:</strong> Corre a 60 FPS en consola real RGH, pero puede presentar errores visuales o crasheos ocasionales. En <strong>Xenia Canary</strong> arranca pero tiene fallos de emulación.</div>
+                
+                <div class="descargas">
+                    <a href="https://direct-link.net/1157790/DD5Tz6YKxF5P" class="btn xex" target="_blank" rel="noopener noreferrer">⬇ Formato .XEX<span>Linkvertise ➔ MediaFire • Xenia / Aurora</span></a>
+                    <div class="pass">
+                        <small>🔑 CONTRASEÑA RAR</small>
+                        <strong>DeepWepOG</strong>
+                        <button type="button" class="btn-copy" id="btnCopy" onclick="copiar()">📋 Copiar</button>
+                    </div>
+                    <a href="https://link-center.net/1157790/uxPlFWq2gRbN" class="btn god" target="_blank" rel="noopener noreferrer">⬇ Formato .GOD<span>Linkvertise ➔ MediaFire • HDD RGH</span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Real Hardware Gameplay (60 FPS) <small style="font-size:12px;color:#ecfccb;">📊 Xbox 360 RGH</small></h2>
+            <video controls poster="captura1.jpg">
+                <source src="gameplay.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de video.
+            </video>
+            <div style="text-align: center;">
+                <a href="https://www.youtube.com/watch?v=5KrH36bbRLg" class="btn-yt" target="_blank" rel="noopener noreferrer">▶ Watch Full HD 60 FPS Gameplay on YouTube</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Capturas (60 FPS) <small style="font-size:12px;color:#ecfccb;">🔍 Clic para ampliar</small></h2>
+            <div class="galeria">
+                <img src="captura1.jpg" onclick="abrir(0)" alt="Captura 1">
+                <img src="captura2.jpg" onclick="abrir(1)" alt="Captura 2">
+                <img src="captura3.jpg" onclick="abrir(2)" alt="Captura 3">
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Instrucciones de Instalación</h2>
+            <ol style="line-height:1.6;padding-left:20px;">
+                <li>Descomprime el <code>.rar</code> usando la contraseña <code>DeepWepOG</code>.</li>
+                <li><strong>Formato .XEX:</strong> Abre <code>default.xex</code> en Xenia Canary o pásalo a tu disco duro en consola RGH.</li>
+                <li><strong>Formato .GOD:</strong> Copia la carpeta del Title ID a <code>Hdd1:\Content\0000000000000000\</code> y escanea en Aurora.</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div id="visor" class="visor" onclick="if(event.target.id==='visor')cerrar()">
+    <button type="button" class="v-btn v-close" onclick="cerrar()">✕</button>
+    <button type="button" class="v-btn v-prev" onclick="mover(-1)">❮</button>
+    <img id="imgFull" src="" alt="Vista previa">
+    <button type="button" class="v-btn v-next" onclick="mover(1)">❯</button>
+</div>
+
+<script>
+    function copiar() {
+        navigator.clipboard.writeText("DeepWepOG");
+        const b = document.getElementById("btnCopy");
+        b.innerText = "✅ ¡Copiada!";
+        setTimeout(() => b.innerText = "📋 Copiar", 2000);
+    }
+    const imgs = ['captura1.jpg', 'captura2.jpg', 'captura3.jpg'];
+    let idx = 0;
